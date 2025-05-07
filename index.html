@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher with Animations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS3 Animations & Transitions</h1>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <div class="toggle-icon">
+                    <div class="toggle-sun"></div>
+                    <div class="toggle-moon"></div>
+                </div>
+            </button>
+        </header>
+
+        <main>
+            <section class="card-container">
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <h2>Hover Me</h2>
+                    <p>This card uses CSS transitions for smooth hover effects.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <h2>Animate Me</h2>
+                    <p>This card demonstrates CSS keyframe animations.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <h2>Click Me</h2>
+                    <p>This card to trigger a JavaScript animation.</p>
+                </div>
+            </section>
+
+            <section class="preferences">
+                <h2>Animation Speed</h2>
+                <div class="slider-container">
+                    <input type="range" id="animation-speed" min="0.5" max="2" step="0.1" value="1">
+                    <span id="speed-value">1x</span>
+                </div>
+                <button id="save-preferences" class="btn">Save Preferences</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>Your preferences are automatically saved to locally</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

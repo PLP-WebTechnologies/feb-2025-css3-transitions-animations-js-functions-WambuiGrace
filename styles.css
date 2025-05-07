@@ -1,0 +1,312 @@
+/* Base styles and variables */
+:root {
+    --primary-color: #172f5f;
+    --secondary-color: #c67c06;
+    --text-color: #333;
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --animation-duration: 1s;
+    --transition-time: 0.3s;
+  }
+  
+  /* Dark theme variables */
+  .dark-theme {
+    --primary-color: #0c3382;
+    --secondary-color: #c67c06;
+    --text-color: #f5f5f5;
+    --bg-color: #547392;
+    --card-bg: #07212e;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-time) ease, 
+                color var(--transition-time) ease;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Header styles with animations */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    animation: slideDown 0.8s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  h1 {
+    color: var(--primary-color);
+    transition: color var(--transition-time) ease;
+  }
+  
+  /* Theme toggle button */
+  #theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    position: relative;
+    transition: background-color var(--transition-time) ease;
+  }
+  
+  .toggle-icon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    transition: transform var(--transition-time) ease;
+  }
+  
+  .dark-theme #theme-toggle .toggle-icon {
+    transform: translateX(30px);
+  }
+  
+  .toggle-sun, .toggle-moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity var(--transition-time) ease;
+  }
+  
+  .toggle-sun {
+    width: 14px;
+    height: 14px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    opacity: 1;
+  }
+  
+  .toggle-moon {
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 3px -3px 0 var(--card-bg);
+    opacity: 0;
+  }
+  
+  .dark-theme .toggle-sun {
+    opacity: 0;
+  }
+  
+  .dark-theme .toggle-moon {
+    opacity: 1;
+  }
+  
+  /* Card styles with transitions and animations */
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform var(--transition-time) ease,
+                box-shadow var(--transition-time) ease,
+                background-color var(--transition-time) ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px var(--shadow-color);
+  }
+  
+  .card:nth-child(1):hover .card-icon {
+    transform: rotate(180deg);
+  }
+  
+  .card:nth-child(2) .card-icon {
+    animation: pulse calc(var(--animation-duration) * 2) infinite alternate;
+  }
+  
+  .card:nth-child(3).clicked .card-icon {
+    animation: spin var(--animation-duration) ease-in-out;
+  }
+  
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform var(--transition-time) ease, 
+                background-color var(--transition-time) ease;
+  }
+  
+  .card h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    transition: color var(--transition-time) ease;
+  }
+  
+  .card p {
+    color: var(--text-color);
+    transition: color var(--transition-time) ease;
+  }
+  
+  /* Keyframe animations */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      background-color: var(--primary-color);
+    }
+    100% {
+      transform: scale(1.2);
+      background-color: var(--secondary-color);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.5);
+      background-color: var(--secondary-color);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+  
+  /* Preferences section */
+  .preferences {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color var(--transition-time) ease,
+                box-shadow var(--transition-time) ease;
+    animation: slideUp 1s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .slider-container {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  
+  input[type="range"] {
+    flex: 1;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-time) ease,
+                transform var(--transition-time) ease;
+  }
+  
+  .btn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+  }
+  
+  .btn:active {
+    transform: scale(0.95);
+  }
+  
+  /* Footer styles */
+  footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--primary-color);
+    color: var(--text-color);
+    transition: color var(--transition-time) ease;
+    font-size: 0.9rem;
+    animation: fadeIn 1.2s ease-out;
+  }
+  
+  /* Notification for saved preferences */
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .notification.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
